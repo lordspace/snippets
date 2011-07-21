@@ -1,0 +1,5 @@
+<UserScriptConfig>
+	<Script filename="remove_all_facebook_ads.user.js" name="Remove All Facebook Ads" namespace="http://userscripts.org/scripts/show/13787" description="Removes any and all ads from Facebook." version="1.4" enabled="true" basedir="remove_all_facebook_ads" modified="1311284350773" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" installurl="http://userscripts.org/scripts/source/13787.user.js">
+		<Include>*facebook.com*</Include>
+	</Script>
+</UserScriptConfig>
