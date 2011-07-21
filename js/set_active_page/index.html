@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://opengraphprotocol.org/schema/"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+
+	<style>
+	.app_main_nav_active {
+		color:green;
+	}
+	</style>
+	
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript">
+    //<![CDATA[
+	$(document).ready(function() {
+        app_set_active_page();
+	});
+
+    /*
+	add a class to the main nav so we know which page we're on.
+	loops through links in a container with class 'app_main_nav' and sets 'app_main_nav_active' class to the current link
+	it just compares pages on the top level directory e.g. products.html and NOT /app/prodcts.html
+	(c) Svetoslav Marinov | WebWeb.ca | LGPL
+	*/
+    function app_set_active_page() {
+        var cur_file = window.location.pathname;
+        
+        cur_file = cur_file.replace(/\?.*/, ''); // rm. params
+        cur_file = cur_file.replace(/^.*\//, ''); // rm. leading stuff. leave just the filename
+        cur_file = cur_file || 'menu.dashboard.php';
+
+        $(".app_main_nav a").each(function() {
+            var cur_lnk_href = $(this).attr('href');
+            cur_lnk_href = cur_lnk_href.replace(/\?.*/, ''); // rm. params
+            cur_lnk_href = cur_lnk_href.replace(/^.*\//, ''); // rm. leading stuff. leave just the filename
+
+            if (cur_lnk_href == cur_file) {
+                $(this).addClass("app_main_nav_active");
+            }
+        });
+    }
+	
+    //]]>
+    </script>	
+
+</head>
+<body>
+
+<div class="app_main_nav">
+    <a href="index.html">Home</a>
+	|
+    <a href="blank.html">Blank Page</a>
+</div>
+
+</body>
+</html>
+	
