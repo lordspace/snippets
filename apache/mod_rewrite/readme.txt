@@ -1,0 +1,1 @@
+if a secure site e.g. ssl.domain.com is accessed with http:// the mod_rewrite rules redirect the same request to https://
