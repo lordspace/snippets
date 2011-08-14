@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://opengraphprotocol.org/schema/"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Quick Jump Menu - with jQuery</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>	
+	<script type="text/javascript" charset="utf-8">
+	//<![CDATA[
+		$(document).ready(function() {
+			$('.site_quick_jump').change(function(){
+				// option 1 use a JS redirect in the current window
+				//window.location.href = $(this).val();
+				
+				// option 2; set the 'action' of the form and submit it
+				if ($(this).val() != '') {
+					$('#site_quick_jump_form').attr('action', $(this).val()); // 
+					$('#site_quick_jump_form').attr('target', '_blank'); // new window
+					$('#site_quick_jump_form').submit(); // Go!
+				}
+			});
+		}); // doc ready
+	//]]>
+	</script>    
+</head>
+<body>
+
+	<div class="site_quick_jump_container">
+		<form id="site_quick_jump_form" method="get" action="">
+		Go to: <select class="site_quick_jump">
+					<option></option>
+					<option value="http://yahoo.com">Yahoo!</option>
+					<option value="/product1.html">Product 1</option>
+					<option value="/product2.html">Product 2</option>
+			   </select>
+		</form>
+	</div>
+
+</body>
+</html>
+	
