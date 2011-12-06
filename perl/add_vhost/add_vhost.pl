@@ -32,7 +32,7 @@ print `mkdir -p /var/www/vhosts/$domain/logs`;
 
 print "Setting up permissions.\n";
 print `chown -R apache:apache /var/www/vhosts/$domain`;
-print `chmod 775 /var/www/vhosts/$domain`; # slavi user has to have access to the files too
+print `chmod -R 775 /var/www/vhosts/$domain`; # slavi user has to have access to the files too
 
 my $vhost_file = "/etc/httpd/conf.d/zz_" . $domain . ".conf";
 print "Setting up vhost file [$vhost_file].\n";
