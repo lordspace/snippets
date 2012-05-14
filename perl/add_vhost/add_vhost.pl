@@ -1,10 +1,11 @@
 #!/usr/bin/perl
-#
+######################################################################################################
 # Adds a vhost on my vps and creates the necessary folders, permissions, ownerships and reloads the web server.
 # Must be run as root.
-# Svetoslav Marinov | http://WebWeb.ca | http://twitter.com/lordspace
-# Copyright 2011 All Rights Reserved.
+# Svetoslav Marinov | http://WebWeb.ca | http://Orbisius.com | http://twitter.com/lordspace
+# Copyright 2011-2012 All Rights Reserved.
 # License: LGPL
+######################################################################################################
 
 usage() unless @ARGV;
 
@@ -30,14 +31,20 @@ print `mkdir -p /var/www/vhosts/$domain`;
 print `mkdir -p /var/www/vhosts/$domain/htdocs`;
 print `mkdir -p /var/www/vhosts/$domain/logs`;
 
+local *FILE;
+
+print "Creating a sample index.php file.\n";
+my $index_file = "/var/www/vhosts/$domain/htdocs/index.php";
+open FILE, '>' . $index_file || die("Error: $!");
+print FILE "Under Construction.";
+close FILE;
+
 print "Setting up permissions.\n";
 print `chown -R apache:apache /var/www/vhosts/$domain`;
 print `chmod -R 775 /var/www/vhosts/$domain`; # slavi user has to have access to the files too
 
 my $vhost_file = "/etc/httpd/conf.d/zz_" . $domain . ".conf";
 print "Setting up vhost file [$vhost_file].\n";
-
-local *FILE;
 open FILE, '>' . $vhost_file || die("Error: $!");
 print FILE vhost_conf($domain);
 close FILE;
